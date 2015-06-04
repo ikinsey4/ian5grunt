@@ -67,12 +67,16 @@ module.exports = function(grunt) {
       }
     },
     connect: {
-      option: {
+      options: {
         port: 9000,
         livereload: 35729
       }, livereload: {
         options: {
           open: true,
+        }
+      }, dist: {
+        options: {
+          open: true
         }
       }
     }
@@ -84,6 +88,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('build', ['jshint', 'concat', 'uglify']);
   grunt.registerTask('serve', ['build', 'connect:dist:keepalive']);
